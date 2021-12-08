@@ -57,18 +57,26 @@ cancel and remove the update.
 ## Testing
 inorder to run the pre programed tests:
 
-1. create a virtual environment called venv by entering "python3 -m venv venv" 
-   into the terminal 
+1. create a virtual environment called venv by entering into the terminal
+        `python3 -m venv venv`
 
-2. activate it by entering .\venv\scripts\activate into the terminal
+2. activate it by entering into the terminal:
+        `.\venv\scripts\activate`
 
-3. enter "setup.py by" into the terminal 
+3. enter into terminal:
+        `pip install e .`
 
-4. enter "pip install e ." 
+4. when in venv, enter into the terminal:
+        `pip install -r requirements`
 
-5. when in venv, enter "pip install -r requirements" into the terminal  
+5. enter into termianl:
+        `deactivate`
+        
+6. and then to restart it enter into terminal:
+        `activate`
 
-6. then, enter "pytest [module file name]" into the terminal
+7. then, enter into the terminal:
+        `pytest [module file name]`
 
 This will run the tests and output how many tests where passed, and if any didnt pass,
 what functions failed their tests. 
@@ -79,6 +87,7 @@ find documentation at docs/build
 ## Details 
 Author: Lucas Enefer
 License: MIT license
+link: https://github.com/Spooks075/course-work-1
 
 
 
