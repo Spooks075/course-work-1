@@ -16,7 +16,7 @@ from flask import Markup
 with open('config.json',encoding="utf-8") as f:
     config_data = json.load(f)
 
-def news_api_request(search_terms:str = 'covid COVID-19 coronavirus') -> json:
+def news_API_request(search_terms:str = 'covid COVID-19 coronavirus') -> json:
     '''
 
     Description:
@@ -91,5 +91,5 @@ def call_articles() -> list:
 
     '''
 
-    articles = update_news(news_api_request(config_data["default news terms"]))
+    articles = update_news(news_API_request(config_data["default news terms"]))
     return articles

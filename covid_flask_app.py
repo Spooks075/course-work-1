@@ -14,13 +14,14 @@ import json
 import sched
 import time
 import logging
+from typing import Callable
 from datetime import datetime
 from flask import Flask, render_template
 from flask import request
-from covid_news_handler import call_articles
+from covid_news_handling import call_articles
 from covid_data_handler import call_function
 
-#use code formaters such as black
+
 FORMAT = '%(levelname)s: %(asctime)s: %(message)s'
 logging.basicConfig(filename='log_file.log', format=FORMAT, level=logging.INFO)
 
@@ -74,7 +75,7 @@ def home():
     updates = Update_list
     )
 
-def update_function(up_news:str,up_data:str) -> str:
+def update_function(up_news:str,up_data:str) -> Callable:
     '''
 
     Description:
@@ -161,7 +162,7 @@ def seconds(input_time:str) -> int:
     return time_till
 
 @app.route("/index",methods = ["GET"])
-def close_button() -> str:
+def close_button() -> Callable:
     '''
 
     Description:

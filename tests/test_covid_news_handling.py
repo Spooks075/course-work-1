@@ -1,6 +1,6 @@
-from covid_news_handler import news_API_request
-from covid_news_handler import update_news
-from covid_news_handler import call_articles
+from covid_news_handling import news_API_request
+from covid_news_handling import update_news
+from covid_news_handling import call_articles
 
 def test_news_API_request():
     assert news_API_request(), "news_API_request: FAILED "
