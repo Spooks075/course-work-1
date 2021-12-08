@@ -47,3 +47,18 @@ INFO: 2021-12-08 16:20:43,353: 127.0.0.1 - - [08/Dec/2021 16:20:43] "GET /index 
 INFO: 2021-12-08 16:20:43,381: 127.0.0.1 - - [08/Dec/2021 16:20:43] "[36mGET /static/images/catimage.jpg HTTP/1.1[0m" 304 -
 INFO: 2021-12-08 16:21:43,447: 127.0.0.1 - - [08/Dec/2021 16:21:43] "GET /index HTTP/1.1" 200 -
 INFO: 2021-12-08 16:21:43,472: 127.0.0.1 - - [08/Dec/2021 16:21:43] "[36mGET /static/images/catimage.jpg HTTP/1.1[0m" 304 -
+INFO: 2021-12-08 17:36:23,363:  * Restarting with stat
+WARNING: 2021-12-08 17:36:26,311:  * Debugger is active!
+INFO: 2021-12-08 17:36:26,321:  * Debugger PIN: 133-815-106
+INFO: 2021-12-08 17:36:26,786:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO: 2021-12-08 17:36:30,179: 127.0.0.1 - - [08/Dec/2021 17:36:30] "GET /index HTTP/1.1" 200 -
+INFO: 2021-12-08 17:36:30,360: 127.0.0.1 - - [08/Dec/2021 17:36:30] "[36mGET /static/images/catimage.jpg HTTP/1.1[0m" 304 -
+INFO: 2021-12-08 17:36:34,985: ARTICLE REMOVED
+INFO: 2021-12-08 17:36:34,991: 127.0.0.1 - - [08/Dec/2021 17:36:34] "GET /index?notif=NFL+Adds+Mask+Requirement%2C+Increases+Covid+Testing HTTP/1.1" 200 -
+INFO: 2021-12-08 17:36:35,043: 127.0.0.1 - - [08/Dec/2021 17:36:35] "[36mGET /static/images/catimage.jpg HTTP/1.1[0m" 304 -
+INFO: 2021-12-08 17:36:42,408: TIME TILL UPDATE CALCULATED
+INFO: 2021-12-08 17:36:42,409: UPDATE SCHEDULED
+INFO: 2021-12-08 17:36:42,412: 127.0.0.1 - - [08/Dec/2021 17:36:42] "GET /index?update=11%3A11&two=test&repeat=repeat&covid-data=covid-data&news=news HTTP/1.1" 200 -
+INFO: 2021-12-08 17:36:42,454: 127.0.0.1 - - [08/Dec/2021 17:36:42] "[36mGET /static/images/catimage.jpg HTTP/1.1[0m" 304 -
+INFO: 2021-12-08 17:36:43,734: 127.0.0.1 - - [08/Dec/2021 17:36:43] "GET /index?update_item=name%3A+test HTTP/1.1" 200 -
+INFO: 2021-12-08 17:36:43,778: 127.0.0.1 - - [08/Dec/2021 17:36:43] "[36mGET /static/images/catimage.jpg HTTP/1.1[0m" 304 -
