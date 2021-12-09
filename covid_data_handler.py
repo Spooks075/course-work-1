@@ -150,7 +150,7 @@ def covid_api_data_deaths(data:dict) -> str:
     while that_days_data['cumDeaths28DaysByPublishDate'] is None:
         count += 1
         that_days_data = new_data[count]
-    deaths = "deaths: " + str(that_days_data['cumDeaths28DaysByPublishDate'])
+    deaths = "Deaths: " + str(that_days_data['cumDeaths28DaysByPublishDate'])
     return deaths
 
 def covid_api_data_hospital_cases(data:dict) -> str:
@@ -180,7 +180,7 @@ def covid_api_data_hospital_cases(data:dict) -> str:
         count += 1
         that_days_data = new_data[count]
     #adds that days hospital cases to a string and then returns it
-    hospital_cases = "hospital cases: " + str(that_days_data['hospitalCases'])
+    hospital_cases = "Hospital cases: " + str(that_days_data['hospitalCases'])
     return hospital_cases
 
 def covid_api_data_new_cases_that_week_nation(data:dict) -> int:

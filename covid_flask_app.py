@@ -64,7 +64,7 @@ def home():
 
     return render_template('template.html',
     image = "catimage.jpg",
-    title = "covid data and news board",
+    title = "Covid Data and News Board",
     location = config_data["local location"],
     nation_location = config_data["nation location"],
     local_7day_infections = Data[0],
