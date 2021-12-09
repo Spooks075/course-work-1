@@ -17,8 +17,8 @@ from uk_covid19 import Cov19API
 s = sched.scheduler(time.time,time.sleep)
 
 #gets settings from config file
-#with open('config.json', encoding="utf-8") as f:
-#    config_data = json.load(f)
+with open('config.json', encoding="utf-8") as f:
+    config_data = json.load(f)
 
 #filter for API request
 cases_and_deaths = {
@@ -280,13 +280,13 @@ def call_function() -> list:
 
     '''
     data = [covid_api_data_new_cases_that_week_nation(
-        covid_API_request("Exeter",)),#config_data["local location"]
+        covid_API_request(config_data["local location"],)),
     covid_api_data_new_cases_that_week_else(
-        covid_API_request("England",'nation')),#config_data["nation location"]
+        covid_API_request(config_data["nation location"],'nation')),
     covid_api_data_hospital_cases(
-        covid_API_request("England",'nation')),
+        covid_API_request(config_data["nation location"],'nation')),
     covid_api_data_deaths(
-        covid_API_request("England",'nation'))]
+        covid_API_request(config_data["nation location"],'nation'))]
     return data
 
 def schedule_covid_updates(update_interval:int, update_name:str) -> sched.Event|str:

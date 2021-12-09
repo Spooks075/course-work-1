@@ -26,8 +26,8 @@ FORMAT = '%(levelname)s: %(asctime)s: %(message)s'
 logging.basicConfig(filename='log_file.log', format=FORMAT, level=logging.INFO)
 
 #gets settings from config file
-#with open('config.json',encoding="utf-8") as f:
-#    config_data = json.load(f)
+with open('config.json',encoding="utf-8") as f:
+    config_data = json.load(f)
 
 #global list for api data
 Data = call_function()
@@ -65,8 +65,8 @@ def home():
     return render_template('template.html',
     image = "catimage.jpg",
     title = "covid data and news board",
-    location = "Exeter", #config_data["local location"],
-    nation_location = "England", #config_data["nation location"],
+    location = config_data["local location"],
+    nation_location = config_data["nation location"],
     local_7day_infections = Data[0],
     national_7day_infections = Data[1],
     hospital_cases =  Data[2],
