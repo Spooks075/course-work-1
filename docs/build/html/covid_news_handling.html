@@ -80,8 +80,8 @@ to each of those articles</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="covid_news_handling.update_news">
-<span class="sig-prename descclassname"><span class="pre">covid_news_handling.</span></span><span class="sig-name descname"><span class="pre">update_news</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_articles_json:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'C:\\Users\\lucas\\AppData\\Local\\Programs\\Python\\Python310\\lib\\json\\__init__.py'&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#covid_news_handling.update_news" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="covid_news_handling.news_list">
+<span class="sig-prename descclassname"><span class="pre">covid_news_handling.</span></span><span class="sig-name descname"><span class="pre">news_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news_articles_json:</span> <span class="pre">&lt;module</span> <span class="pre">'json'</span> <span class="pre">from</span> <span class="pre">'C:\\Users\\lucas\\AppData\\Local\\Programs\\Python\\Python310\\lib\\json\\__init__.py'&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#covid_news_handling.news_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description:</p>
 <blockquote>
 <div><p>Function that creates a list of dictinaries containitng articles with their
@@ -100,6 +100,24 @@ title, content and a link to the article</p>
 <dt>news_articles_list {list}<span class="classifier">list of dictinaries containitng articles with sub ditionaries:</span></dt><dd><p>{title} {content}</p>
 </dd>
 </dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_news_handling.update_news">
+<span class="sig-prename descclassname"><span class="pre">covid_news_handling.</span></span><span class="sig-name descname"><span class="pre">update_news</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sched.Event</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#covid_news_handling.update_news" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:</p>
+<blockquote>
+<div><p>Function that schedules a covid news update</p>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><p>update_name {string} : name of update</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p>sched_update {event} : scheduled update event
+update_name {string} : name of update</p>
 </div></blockquote>
 </dd></dl>
 

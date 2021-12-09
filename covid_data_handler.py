@@ -10,12 +10,15 @@ Description:
 
 
 import json
+import sched
+import time
 from uk_covid19 import Cov19API
 
+s = sched.scheduler(time.time,time.sleep)
 
 #gets settings from config file
-with open('config.json', encoding="utf-8") as f:
-    config_data = json.load(f)
+#with open('config.json', encoding="utf-8") as f:
+#    config_data = json.load(f)
 
 #filter for API request
 cases_and_deaths = {
@@ -47,7 +50,7 @@ def parse_csv_data(csv_filename:str = "nation_2021-10-28.csv") -> list:
     csv_data = open(csv_filename , 'r').readlines()
     return csv_data
 
-def process_csv_data(covid_csv_data:list) -> tuple[int,int,int]:
+def process_covid_csv_data(covid_csv_data:list) -> tuple[int,int,int]:
     '''
 
     Description:
@@ -87,10 +90,10 @@ def process_csv_data(covid_csv_data:list) -> tuple[int,int,int]:
             weeks_cases += int(line[6])
             count += 1
 
-    return deaths, hospital_cases, weeks_cases
+    return weeks_cases, hospital_cases, deaths
 
 
-def covid_api_request(location:str = 'Exeter', location_type:str = 'ltla') -> list:
+def covid_API_request(location:str = 'Exeter', location_type:str = 'ltla') -> list:
     '''
     Description:
 
@@ -103,7 +106,8 @@ def covid_api_request(location:str = 'Exeter', location_type:str = 'ltla') -> li
 
     Returns:
 
-        new_data {list} : a list of dictionarys containing 4 sub dictionary's:
+        new_data {dict} : a dictionary containing a list of dictionarys
+                          containing 4 sub dictionary's:
                       {newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
                       {hospitalCases} {newCasesBySpecimenDate}
     '''
@@ -116,12 +120,10 @@ def covid_api_request(location:str = 'Exeter', location_type:str = 'ltla') -> li
     api = Cov19API(filters=default_filters,structure=cases_and_deaths)
     #requests the API data
     data = api.get_json()
-    #filters down to a list of just a list of the dictionarys for the data of each day
-    new_data = data['data']
-    return new_data
+    return data
 
 
-def covid_api_data_deaths(data:list) -> str:
+def covid_api_data_deaths(data:dict) -> str:
     '''
 
     Description:
@@ -130,7 +132,7 @@ def covid_api_data_deaths(data:list) -> str:
 
     Arguments:
 
-        data {list} : a list of dictionarys containing 4 sub dictionary's:
+        data {dict} : a dictionary containing a list of dictionarys containing 4 sub dictionary's:
                       {newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
                       {hospitalCases} {newCasesBySpecimenDate}
 
@@ -139,18 +141,19 @@ def covid_api_data_deaths(data:list) -> str:
         deaths {string} : a string contaning the number of deaths
 
     '''
+    new_data = data['data']
     count=0
     #gets the data for today
-    that_days_data = data[count]
+    that_days_data = new_data[count]
 
     #goes through each days hospital cases data until that data does not equal none
     while that_days_data['cumDeaths28DaysByPublishDate'] is None:
         count += 1
-        that_days_data = data[count]
+        that_days_data = new_data[count]
     deaths = "deaths: " + str(that_days_data['cumDeaths28DaysByPublishDate'])
     return deaths
 
-def covid_api_data_hospital_cases(data:list) -> str:
+def covid_api_data_hospital_cases(data:dict) -> str:
     '''
 
     Description:
@@ -159,7 +162,7 @@ def covid_api_data_hospital_cases(data:list) -> str:
 
     Arguments:
 
-        data {list} : a list of dictionarys containing 4 sub dictionary's:
+        data {dict} : a dictionary containting a list of dictionarys containing 4 sub dictionary's:
                       {newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
                       {hospitalCases} {newCasesBySpecimenDate}
 
@@ -168,18 +171,19 @@ def covid_api_data_hospital_cases(data:list) -> str:
         hospital_cases {string} : a string containing the number of current hospital cases
 
     '''
+    new_data = data['data']
     count = 0
     #gets the data for the today
-    that_days_data = data[count]
+    that_days_data = new_data[count]
     #goes through each days hospital cases data until that data does not equal none
     while that_days_data['hospitalCases'] is None:
         count += 1
-        that_days_data = data[count]
+        that_days_data = new_data[count]
     #adds that days hospital cases to a string and then returns it
     hospital_cases = "hospital cases: " + str(that_days_data['hospitalCases'])
     return hospital_cases
 
-def covid_api_data_new_cases_that_week_nation(data:list) -> int:
+def covid_api_data_new_cases_that_week_nation(data:dict) -> int:
     '''
 
     Description:
@@ -189,7 +193,7 @@ def covid_api_data_new_cases_that_week_nation(data:list) -> int:
 
     Arguments:
 
-        data {list} : a list of dictionarys containing 4 sub dictionary's:
+        data {dict} : a dictionary containing a list of dictionarys containing 4 sub dictionary's:
                       {newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
                       {hospitalCases} {newCasesBySpecimenDate}
 
@@ -198,18 +202,19 @@ def covid_api_data_new_cases_that_week_nation(data:list) -> int:
         new_cases_that_week {intger} : an intiger with the 7 day infection rate for that nation
 
     '''
+    new_data = data['data']
     new_cases_that_week = 0
     count_1 = 0
     #gets the data for that day
-    that_days_data = data[count_1]
+    that_days_data = new_data[count_1]
     #goes through each days cases until it does not equal none
     while that_days_data['newCasesByPublishDate'] is None:
         count_1 += 1
-        that_days_data = data[count_1]
+        that_days_data = new_data[count_1]
     count_2 = 0
     #then goes through the next 7 days
     while count_2 != 7:
-        that_days_data = data[count_1]
+        that_days_data = new_data[count_1]
         #adds those days cases together
         new_cases_that_week += that_days_data['newCasesByPublishDate']
         count_1 += 1
@@ -217,7 +222,7 @@ def covid_api_data_new_cases_that_week_nation(data:list) -> int:
     return new_cases_that_week
 
 
-def covid_api_data_new_cases_that_week_else(data:list) -> int:
+def covid_api_data_new_cases_that_week_else(data:dict) -> int:
     '''
 
     Description:
@@ -227,7 +232,7 @@ def covid_api_data_new_cases_that_week_else(data:list) -> int:
 
     Arguments:
 
-        data {list} : a list of dictionarys containing 4 sub dictionary's:
+        data {dict} : a dictionary containing a list of dictionarys containing 4 sub dictionary's:
                       {newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
                       {hospitalCases} {newCasesBySpecimenDate}
 
@@ -236,19 +241,20 @@ def covid_api_data_new_cases_that_week_else(data:list) -> int:
         new_cases_that_week {intger} : an intiger with the 7 day infection rate for that local area
 
     '''
+    new_data = data['data']
     new_cases_that_week = 0
     count_1 = 0
     #gets the data for that day
-    that_days_data = data[count_1]
+    that_days_data = new_data[count_1]
     #goes through each days cases until it does not equal none
     while that_days_data['newCasesBySpecimenDate'] is None:
         count_1 += 1
-        that_days_data = data[count_1]
+        that_days_data = new_data[count_1]
 
     count_2 = 0
     #then goes through the next 7 days
     while count_2 != 7:
-        that_days_data = data[count_1]
+        that_days_data = new_data[count_1]
         #adds those days cases together
         new_cases_that_week += that_days_data['newCasesBySpecimenDate']
         count_1 += 1
@@ -274,11 +280,33 @@ def call_function() -> list:
 
     '''
     data = [covid_api_data_new_cases_that_week_nation(
-        covid_api_request(config_data["local location"],)),
+        covid_API_request("Exeter",)),#config_data["local location"]
     covid_api_data_new_cases_that_week_else(
-        covid_api_request(config_data["nation location"],'nation')),
+        covid_API_request("England",'nation')),#config_data["nation location"]
     covid_api_data_hospital_cases(
-        covid_api_request(config_data["nation location"],'nation')),
+        covid_API_request("England",'nation')),
     covid_api_data_deaths(
-        covid_api_request(config_data["nation location"],'nation'))]
+        covid_API_request("England",'nation'))]
     return data
+
+def schedule_covid_updates(update_interval:int, update_name:str) -> sched.Event|str:
+    '''
+    Description:
+
+        Function that schedules an update of the covid data after a given time
+
+    Arguments:
+
+        update_interval {int} : time till update runs
+        update_name {string} : name of update
+
+    Returns:
+
+        sched_update {event} : scheduled update event
+        update_name {string} : name of update
+
+    '''
+    sched_update = s.enter(update_interval,1,call_function())
+    s.run()
+
+    return sched_update,update_name

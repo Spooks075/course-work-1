@@ -59,8 +59,33 @@ national hospital cases, national deaths</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.covid_API_request">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_API_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Exeter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ltla'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#covid_data_handler.covid_API_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:</p>
+<blockquote>
+<div><p>Function which gets the covid data from the api</p>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><p>location {string} : the name of the location to get the api covid data for
+location_type {string} : the type of location to get the covid api data for</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><dl>
+<dt>new_data {dict}<span class="classifier">a dictionary containing a list of dictionarys</span></dt><dd><blockquote>
+<div><p>containing 4 sub dictionary’s:</p>
+</div></blockquote>
+<p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
+{hospitalCases} {newCasesBySpecimenDate}</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="covid_data_handler.covid_api_data_deaths">
-<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_deaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_deaths" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_deaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_deaths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description:</p>
 <blockquote>
 <div><p>Function which gets total number of covid deaths from the covid api data</p>
@@ -68,7 +93,7 @@ national hospital cases, national deaths</p>
 <p>Arguments:</p>
 <blockquote>
 <div><dl class="simple">
-<dt>data {list}<span class="classifier">a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
+<dt>data {dict}<span class="classifier">a dictionary containing a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
 {hospitalCases} {newCasesBySpecimenDate}</p>
 </dd>
 </dl>
@@ -81,7 +106,7 @@ national hospital cases, national deaths</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="covid_data_handler.covid_api_data_hospital_cases">
-<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_hospital_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_hospital_cases" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_hospital_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_hospital_cases" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description:</p>
 <blockquote>
 <div><p>Function which gets the current number of hospital cases from the covid api data</p>
@@ -89,7 +114,7 @@ national hospital cases, national deaths</p>
 <p>Arguments:</p>
 <blockquote>
 <div><dl class="simple">
-<dt>data {list}<span class="classifier">a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
+<dt>data {dict}<span class="classifier">a dictionary containting a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
 {hospitalCases} {newCasesBySpecimenDate}</p>
 </dd>
 </dl>
@@ -102,7 +127,7 @@ national hospital cases, national deaths</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="covid_data_handler.covid_api_data_new_cases_that_week_else">
-<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_new_cases_that_week_else</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_new_cases_that_week_else" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_new_cases_that_week_else</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_new_cases_that_week_else" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description:</p>
 <blockquote>
 <div><p>Function which gets the 7 day infection rate for the
@@ -111,7 +136,7 @@ specified local area from the covid api data</p>
 <p>Arguments:</p>
 <blockquote>
 <div><dl class="simple">
-<dt>data {list}<span class="classifier">a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
+<dt>data {dict}<span class="classifier">a dictionary containing a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
 {hospitalCases} {newCasesBySpecimenDate}</p>
 </dd>
 </dl>
@@ -124,7 +149,7 @@ specified local area from the covid api data</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="covid_data_handler.covid_api_data_new_cases_that_week_nation">
-<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_new_cases_that_week_nation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_new_cases_that_week_nation" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_data_new_cases_that_week_nation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_data_new_cases_that_week_nation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description:</p>
 <blockquote>
 <div><p>Function which gets the 7 day infection rate for the
@@ -133,7 +158,7 @@ specified nation from the covid api data</p>
 <p>Arguments:</p>
 <blockquote>
 <div><dl class="simple">
-<dt>data {list}<span class="classifier">a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
+<dt>data {dict}<span class="classifier">a dictionary containing a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
 {hospitalCases} {newCasesBySpecimenDate}</p>
 </dd>
 </dl>
@@ -141,28 +166,6 @@ specified nation from the covid api data</p>
 <p>Returns:</p>
 <blockquote>
 <div><p>new_cases_that_week {intger} : an intiger with the 7 day infection rate for that nation</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="covid_data_handler.covid_api_request">
-<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_api_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Exeter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ltla'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#covid_data_handler.covid_api_request" title="Permalink to this definition">¶</a></dt>
-<dd><p>Description:</p>
-<blockquote>
-<div><p>Function which gets the covid data from the api</p>
-</div></blockquote>
-<p>Arguments:</p>
-<blockquote>
-<div><p>location {string} : the name of the location to get the api covid data for
-location_type {string} : the type of location to get the covid api data for</p>
-</div></blockquote>
-<p>Returns:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>new_data {list}<span class="classifier">a list of dictionarys containing 4 sub dictionary’s:</span></dt><dd><p>{newCasesByPublishDate} {cumDeaths28DaysByPublishDate}
-{hospitalCases} {newCasesBySpecimenDate}</p>
-</dd>
-</dl>
 </div></blockquote>
 </dd></dl>
 
@@ -184,8 +187,8 @@ location_type {string} : the type of location to get the covid api data for</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="covid_data_handler.process_csv_data">
-<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">process_csv_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covid_csv_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#covid_data_handler.process_csv_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="covid_data_handler.process_covid_csv_data">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">process_covid_csv_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covid_csv_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#covid_data_handler.process_covid_csv_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Description:</p>
 <blockquote>
 <div><p>Function that gets the number of deaths, number of hospital cases and 7 day infection rate
@@ -200,6 +203,25 @@ from covid csv data</p>
 <div><p>deaths {int} : the number of deaths
 hospital_cases {int} : the number of hospital cases
 weeks_cases {int} : the 7 day infection rate</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.schedule_covid_updates">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">schedule_covid_updates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sched.Event</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="headerlink" href="#covid_data_handler.schedule_covid_updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description:</p>
+<blockquote>
+<div><p>Function that schedules an update of the covid data after a given time</p>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><p>update_interval {int} : time till update runs
+update_name {string} : name of update</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p>sched_update {event} : scheduled update event
+update_name {string} : name of update</p>
 </div></blockquote>
 </dd></dl>
 

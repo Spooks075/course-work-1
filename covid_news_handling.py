@@ -7,14 +7,17 @@ Description:
     to each of those articles
 
 '''
-
+import sched
+import time
 import json
 import requests
 from flask import Markup
 
+s = sched.scheduler(time.time,time.sleep)
+
 #gets settings from config file
-with open('config.json',encoding="utf-8") as f:
-    config_data = json.load(f)
+#with open('config.json',encoding="utf-8") as f:
+#    config_data = json.load(f)
 
 def news_API_request(search_terms:str = 'covid COVID-19 coronavirus') -> json:
     '''
@@ -36,13 +39,13 @@ def news_API_request(search_terms:str = 'covid COVID-19 coronavirus') -> json:
 
     #creates url
     complete_url =  'https://newsapi.org/v2/everything?q=' + search_terms
-    complete_url += '&apiKey=' + config_data["apikey"]
+    complete_url += '&apiKey=' + "1019ef69744f449cb833019a1222dc37"#config_data["apikey"]
     #request data from api
     articles = requests.get(complete_url).json()
     return articles
 
 
-def update_news(news_articles_json:json) -> list:
+def news_list(news_articles_json:json) -> list:
     '''
 
     Description:
@@ -91,5 +94,25 @@ def call_articles() -> list:
 
     '''
 
-    articles = update_news(news_API_request(config_data["default news terms"]))
+    articles = news_list(news_API_request())#config_data["default news terms"])
     return articles
+
+def update_news(update_name:str) -> sched.Event|str:
+    '''
+    Description:
+
+        Function that schedules a covid news update
+
+    Arguments:
+
+        update_name {string} : name of update
+
+    Returns:
+
+        sched_update {event} : scheduled update event
+        update_name {string} : name of update
+
+    '''
+    sched_update = s.enter(1,1,news_list,(news_API_request()))#config_data["default news terms"])
+
+    return sched_update,update_name
