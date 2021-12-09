@@ -82,7 +82,7 @@ This will run the tests and output how many tests where passed, and if any didnt
 what functions failed their tests. 
 
 ## Developer Documentation
-find documentation at docs/build
+find documentation at docs/build (only works in code editor)
 
 ## Details 
 Author: Lucas Enefer
