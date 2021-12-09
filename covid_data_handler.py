@@ -307,6 +307,7 @@ def schedule_covid_updates(update_interval:int, update_name:str) -> sched.Event|
 
     '''
     sched_update = s.enter(update_interval,1,call_function())
-    s.run()
 
     return sched_update,update_name
+
+s.run()

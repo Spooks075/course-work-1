@@ -116,3 +116,5 @@ def update_news(update_name:str) -> sched.Event|str:
     sched_update = s.enter(1,1,news_list,(news_API_request(config_data["default news terms"])))
 
     return sched_update,update_name
+
+s.run()
