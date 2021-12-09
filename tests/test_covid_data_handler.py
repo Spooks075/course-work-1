@@ -37,12 +37,12 @@ def test_parse_csv_data():
 def test_covid_api_data_deaths():
     deaths = covid_api_data_deaths({'data':[{'cumDeaths28DaysByPublishDate': None},
     {'cumDeaths28DaysByPublishDate':1},{'cumDeaths28DaysByPublishDate':2}]})
-    assert deaths == "deaths: 1","covid_api_data_deaths: FAILED"
+    assert deaths == "Deaths: 1","covid_api_data_deaths: FAILED"
 
 def test_covid_api_data_hospital_cases():
     hospital_cases = covid_api_data_hospital_cases({'data':[{'hospitalCases': None},
     {'hospitalCases': 1},{'hospitalCases': 2}]})
-    assert hospital_cases == "hospital cases: 1", "covid_api_data_hospital_cases: FAILED"
+    assert hospital_cases == "Hospital cases: 1", "covid_api_data_hospital_cases: FAILED"
 
 def test_covid_api_data_new_cases_that_week_nation():
     week_cases = covid_api_data_new_cases_that_week_nation(covid_API_request("England","nation"))
